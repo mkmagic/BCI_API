@@ -1,0 +1,30 @@
+<BackdoorKnownCommands>
+    <section name="BackdoorMessageProtocol">
+        <import section="Status"/>
+        <import section="Event"/>
+        <import section="Tap"/>
+        <import section="Send"/>
+    </section>
+
+    <section name="Status">
+        <arg name="Name">str</arg>
+        <arg name="Active">distutils.util.strtobool</arg>
+        <arg name="Sender">str</arg>
+        <arg name="SenderActive">distutils.util.strtobool</arg>
+        <arg name="Receivers" size="+">str.split</arg>
+    </section>
+    <section name="Event">
+        <arg name="Name">str</arg>
+        <arg name="Id">str</arg>
+        <arg name="Event">str</arg>
+        <arg name="Time">str</arg>
+    </section>
+    <section name="Tap">
+        <arg name="Name">str</arg>
+        <arg name="Active">distutils.util.strtobool</arg>
+    </section>
+    <section name="Send">
+        <arg name="Name">str</arg>
+        <arg name="Message">str</arg>
+    </section>
+</BackdoorKnownCommands>

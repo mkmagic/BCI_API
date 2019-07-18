@@ -1,0 +1,6 @@
+<CommunicationServer>
+    <section name="Server">
+        <value name="Hostname">127.0.0.1</value>
+        <value name="MaxLogLevel" type="int">0</value>
+    </section>
+</CommunicationServer>

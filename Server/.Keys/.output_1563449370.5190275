@@ -1,0 +1,8 @@
+[93m
+StartServer v1.0.0.0: A Communication Server
+[0m	To exit, enter one of the following ['q', 'exit', 'quit']
+	to read commands from a file, enter one of the following ['.read', '.r']
+[1m
+	Tip: At any time, add '-h' flag to the command for help.
+[0m
+

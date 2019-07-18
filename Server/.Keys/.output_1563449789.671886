@@ -1,0 +1,22 @@
+[93m
+Server v1.0.0.0: A Communication Server
+[0m	To exit, enter one of the following ['q', 'quit', 'exit']
+	to read commands from a file, enter one of the following ['.r', '.read']
+[1m
+	Tip: At any time, add '-h' flag to the command for help.
+[0m
+
+usage: Server.py [-h] {component,.set,server,backdoor} ...
+
+Server v1.0.0.0: A Communication Server
+
+positional arguments:
+  {component,.set,server,backdoor}
+    component           Add a new component to the server structure
+    .set                Control the settings
+    server              Operate the server
+    backdoor            Manage a backdoor connection for a remote controller
+
+optional arguments:
+  -h, --help
+

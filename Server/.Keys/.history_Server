@@ -159,3 +159,24 @@ server status UNITYEEG --logLevel 0
 server status UNITYEEG --logLevel 4
 server status UNITYEEG --logLevel 3
 server close
+q
+.r C:\Users\Michael\BCI_API\Demo.config
+-h
+server -h
+server structure
+server -h
+server start
+server close
+server structure
+server start
+server -h
+server status UNITYEEG
+server control -h
+server control UNITYEEG
+server -h
+-h
+server start
+server sta
+server start
+q
+server start

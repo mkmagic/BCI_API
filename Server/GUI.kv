@@ -1,0 +1,359 @@
+# File name: Gui.py
+#: kivy 1.10.0
+
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import MAIN_COLOR __main__.MAIN_COLOR
+#:import TITLE_COLOR __main__.TITLE_COLOR
+#:import FONT_COLOR __main__.FONT_COLOR
+#:import BUTTON_COLOR __main__.BUTTON_COLOR
+#:import BUTTON_FONT_COLOR __main__.BUTTON_FONT_COLOR
+#:import SUNKEN_COLOR __main__.SUNKEN_COLOR
+#:import SUNKEN_FONT_COLOR __main__.SUNKEN_FONT_COLOR
+#:import DROP_DOWN_BTN_NAME __main__.DROP_DOWN_BTN_NAME
+#:import FALSE_COLOR __main__.FALSE_COLOR
+
+
+ScreenManagement:
+    transition: FadeTransition()
+    ConnectScreen:
+    MangerScreen:
+
+            
+<MangerScreen>:
+    name: 'MangerScreen'
+    __safe_id: [dropdown.__self__]
+
+    # Background color
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgb: get_color_from_hex(MAIN_COLOR)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    # Title
+    Label:
+        pos_hint: {'x':0, 'y': 0.4}
+        color: get_color_from_hex(TITLE_COLOR)
+        text: "[b]Server Remote Controller[/b]"
+        font_size: 48
+        markup: True
+
+
+    # Log Output
+    BoxLayout:
+        orientation:'horizontal'
+        size_hint: .57, .45
+        padding: 10
+        canvas.before:
+            Color:
+                rgb: get_color_from_hex(SUNKEN_COLOR)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        spacing: 20
+        pos_hint: {'x':0.025, 'y': .265}
+
+        ScrollView:
+            size_hint_x: 0.99
+            orientation: 'horizontal'
+            size: self.size
+
+            ScrollView:
+                id: gridScroller
+                size_hint_y: 0.99
+                size: self.size
+                orientation: 'vertical'
+
+                GridLayout:
+                    id: messagesGrid
+                    name: "messagesGrid"
+                    size_hint_y: None
+                    cols: 1
+                    row_default_height: '20dp'
+                    row_force_default: True
+                    spacing: 0, 0
+                    padding: 0, 0
+                    height: self.minimum_height
+
+            #Label:
+             #   name: 'tapField'
+              #  color: get_color_from_hex(SUNKEN_FONT_COLOR)
+               # id: tapField
+                #text: ""
+               # font_size: 12
+                #size_hint: None, None   
+               # size: self.texture_size
+               # halign: 'left'
+               # valign: 'middle'
+               # markup: True
+    # Log Title
+    Label:
+        pos_hint: {'x':-0.41, 'y': 0.26}
+        color: get_color_from_hex(BUTTON_COLOR)
+        text: "[b]Events Log[/b]"
+        font_size: 24
+        markup: True
+
+    # Tap Checkbox
+    BoxLayout:
+        size_hint: 0.02, 0.02
+        pos_hint: {'x':.885, 'y':.73}
+
+        canvas.before:
+            Color:
+                rgb: get_color_from_hex(SUNKEN_COLOR)
+            Rectangle:
+                pos: (self.pos[0]+5, self.pos[1]-1)
+                size: (self.size[0]*0.65, self.size[1]*1.1)
+
+        CheckBox:
+            id: tapCheckBox
+            name: 'tapCheckBox'
+            
+   
+    # Tap Label
+    Label:
+        text: 'Tap'
+        pos_hint: {'x':.43, 'y':.24}
+        font_size: 18
+        color: get_color_from_hex(FONT_COLOR)
+
+
+    # Dropdown
+    Button:
+        name: DROP_DOWN_BTN_NAME
+        id: nameBtn
+        pos_hint: {'x':.65, 'y':.715}
+        size_hint_x: 0.225
+
+        text: '[b]Communication Path[/b]'
+        font_size: 18
+        background_normal: ''
+        background_color: get_color_from_hex(BUTTON_COLOR)
+        color: get_color_from_hex(BUTTON_FONT_COLOR)
+        markup: True
+
+        on_release: dropdown.open(self)
+        size_hint_y: None
+        height: '30dp'
+        on_press: app.root.setPaths()
+
+    Widget:
+        on_parent: dropdown.dismiss()
+
+    DropDown:
+        name: 'dropdown'
+        id: dropdown
+        on_select: nameBtn.text = '{}'.format(args[1])
+        max_height: 250
+        
+
+    # Status output
+    BoxLayout:
+        id: statuseBoxLayout
+        orientation:'vertical'
+        size_hint: 0.3, .525
+        pos_hint: {'x':.65, 'y':.19}
+        #padding: 10
+
+        canvas.before:
+            Color:
+                rgb: get_color_from_hex(SUNKEN_COLOR)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        ScrollView:
+            size_hint_x: 0.99
+            orientation: 'horizontal'
+
+            ScrollView:
+                id: scrollLayout
+                size_hint_y: 0.99
+                orientation: 'vertical'
+                Label:
+                    size_hint: None, None   
+                    size: self.texture_size
+                    #text_size_x: self.size[0]
+    
+
+                    name:"statusField"
+                    id: statusField
+                    color: get_color_from_hex(SUNKEN_FONT_COLOR)
+    
+                    halign: 'left'
+                    valign: 'middle'
+                    markup: True
+
+    # Input Line
+    BoxLayout:
+        orientation:'horizontal'
+        size_hint: 0.5, .08
+        padding: 10
+        pos_hint: {'x':0.015, 'y': 0.175}
+
+        TextInput:
+            id: sendMsgInp
+            name: 'sendMsgInp'
+            hint_text: "type..."
+            foreground_color: get_color_from_hex(SUNKEN_FONT_COLOR)
+            background_color: get_color_from_hex(SUNKEN_COLOR)
+            pos: 0, 0
+            size: 0.15, 0.05
+            multiline: False
+            on_text_validate: app.root.sendMessage()
+
+    # Send Button
+    BoxLayout:
+        orientation:'horizontal'
+        size_hint: 0.105, .08
+        padding: 10
+        pos_hint: {'x':0.5, 'y': 0.175}
+
+        Button:
+            id: sendMsgBtn
+            name: "sendMsgBtn"
+            text: "[b]Send[/b]"
+            font_size: 16
+            background_normal: ''
+            background_color: get_color_from_hex(BUTTON_COLOR)
+            color: get_color_from_hex(BUTTON_FONT_COLOR)
+            markup: True
+            
+            pos: root.x + 310, (root.height / 2) + 250
+            size: 100,50
+            on_press: app.root.sendMessage()
+
+    # Error messages
+    Label:
+        id: msgError
+        name: 'msgError'
+        pos_hint: {'x':-0.37, 'y': -0.35}
+        color: get_color_from_hex(FALSE_COLOR)
+        text: ""
+        font_size: 15
+
+    # server disconnect error
+    Label:
+        id: serverDisconectError
+        name: 'serverDisconectError'
+        pos_hint: {'x':0, 'y': 0.3}
+        color: get_color_from_hex(FALSE_COLOR)
+        text: ""
+        font_size: 30
+
+    Button:
+        pos_hint: {'x':0.56, 'y': 0.66}
+
+        size_hint_x: 0.03
+        size_hint_y: 0.0468
+
+        text: '[b]X[/b]'
+        font_size: 24
+        background_normal: ''
+        background_color: get_color_from_hex(BUTTON_COLOR)
+        #color: get_color_from_hex(FALSE_COLOR)
+        markup: True
+        on_press: app.root.cleanLogger()
+
+
+
+
+
+
+<ConnectScreen>:
+    name: 'ConnectScreen'
+ 
+    # Background color
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgb: get_color_from_hex(MAIN_COLOR)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    # Title
+    Label:
+        pos_hint: {'x':0, 'y': 0.3}
+        color: get_color_from_hex(TITLE_COLOR)
+        text: "[b]Server Remote Controller[/b]"
+        font_size: 48
+        markup: True
+
+
+    
+
+    # Port input box
+
+    BoxLayout:
+        orientation:'horizontal'
+        size_hint: 0.1, .11
+        pos_hint: {'x':.5 + (0.26 + 0.02 + 0.1)/2 - 0.1, 'y': 0.425}
+
+        TextInput:
+            name: 'portInput'
+            id: portInput
+            hint_text: "Port"
+            text: "1234"
+            multiline: False
+            foreground_color: get_color_from_hex(SUNKEN_FONT_COLOR)
+            background_color: get_color_from_hex(SUNKEN_COLOR)
+            font_size: 12
+            input_filter: lambda text, from_undo: text[:5-len(self.text)]
+            write_tab: False
+            focus: True
+            focus_next: hostInput
+
+# Host input box
+    BoxLayout:
+        orientation:'horizontal'
+        size_hint: 0.26, .11
+        pos_hint: {'x':.5 - (0.26 + 0.02 + 0.1)/2, 'y': 0.425}
+
+
+        TextInput:
+            name: 'hostInput'
+            id: hostInput
+            hint_text: "Host"
+            text: "127.0.0.1"
+            multiline: False
+            foreground_color: get_color_from_hex(SUNKEN_FONT_COLOR)
+            background_color: get_color_from_hex(SUNKEN_COLOR)
+            font_size: 12
+            input_filter: lambda text, from_undo: text[:20-len(self.text)]
+            write_tab: False
+            focus: True
+            focus_next: portInput
+            
+
+    # Connect Button
+    Button:
+        on_release: app.root.connectServerAndChangeScreen(portInput.text)
+        text: '[b]connect[/b]'
+        font_size: 18
+        background_normal: ''
+        background_color: get_color_from_hex(BUTTON_COLOR)
+        color: get_color_from_hex(BUTTON_FONT_COLOR)
+        markup: True
+        size_hint: (((0.5 -(0.26 + 0.02 + 0.1)/2) + 0.26)-0.5)*2, 0.15
+        pos_hint: {'x':0.5 - (((0.5 -(0.26 + 0.02 + 0.1)/2) + 0.26)-0.5), 'y': 0.2}
+
+    # Errors
+    Label:
+        id: connError
+        name: 'connError'
+        pos_hint: {'x':0.1, 'y': -0.1}
+        color: 1, 1, 1, 1
+        text: ""
+        font_size: 15
+
+
+<Message>:
+    size_hint_y: None
+    text_size: self.width, None
+    height: self.texture_size[1]
+    color: get_color_from_hex(SUNKEN_FONT_COLOR)
+    text: ""

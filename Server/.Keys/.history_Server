@@ -180,3 +180,15 @@ server sta
 server start
 q
 server start
+.r C:\Users\Michael\BCI_API\Demo.config
+q
+.r C:\Users\Michael\BCI_API\Demo.config
+q
+.r C:\Users\Michael\BCI_API\Demo.config
+--help
+backdoor -h
+backdoor open -h
+backdoor open 1234
+server start
+server control UNITYEEG
+quit

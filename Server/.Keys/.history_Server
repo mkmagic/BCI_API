@@ -1,1 +1,161 @@
 -h
+q
+-h
+q
+server -h
+.r -h
+.read q
+q
+exit
+-h
+server -h
+server structure
+component
+component -h
+exit
+exit
+exit
+server -h
+exit
+q
+q
+component -h
+exit
+component -h
+component Unity_Transmitter TX -h
+component Unity_Transmitter TX UnityEEG UDP 6012
+server structure
+exit
+exit
+component -h
+component Unity_Transmitter TX -h
+component Unity_Transmitter TX UnityEEG UDP 6010
+server -h
+server structure
+component EEG_Receiver RX -h
+component EEG_Receiver RX UNITYEEG 6011
+server structure
+component unity TX a udp 6010
+component unity TX a udp 6050
+server structure
+exit
+component -h
+component Unity_Transmitter TX -h
+component Unity_Transmitter TX UnityEEG UDP 6010
+server -h
+server structure
+component EEG_Receiver RX -h
+component EEG_Receiver RX UNITYEEG 6011
+server structure
+-h
+.set -h
+q
+q
+-h
+.set -h
+.set logging -h
+.set -h
+.set hostname -h
+hostname
+hostname
+-h
+server -h
+server status
+server -h
+-h
+.set 
+.set
+.set hostname
+.set logging
+q
+-h
+.set -h
+.set logging -h
+.set hostname -h
+.set hostname
+.set hostname 10.0.0.2
+q
+q
+server -h
+server structure -h
+server structure
+server start -h
+server restart -h
+server status -h
+component unity TX -h
+.r C:\Users\Michael\BCI_API\Demo.config
+server structure
+server start -h
+server start --transmission unityeeg
+server status
+server status UNITYEEG
+server structure
+clear
+-h
+--hel[
+--help
+q
+.r C:\Users\Michael\BCI_API\Demo.config
+-h
+server start
+server close
+server structure
+---help
+--help
+q
+.r C:\Users\Michael\BCI_API\Demo.config
+server -h
+server structure
+server -h
+server start -h
+server start
+server structure
+server -h
+server status -h
+server status UNITYEEG
+server -h
+server control -h
+server control UNITYEEG -h
+server control UNITYEEG hello
+server control UNITYEEG 'hello'
+server control "hello"
+server control UNITYEEG "hello"
+server control UNITYEEG -h
+server control UNITYEEG 
+.r C:\Users\Michael\BCI_API\Demo.config
+.r C:\Users\Michael\BCI_API\Demo.config
+server start
+server control UNITYEEG
+.r C:\Users\Michael\BCI_API\Demo.config
+server start
+server control
+server control UNITYEEG
+.r C:\Users\Michael\BCI_API\Demo.config
+server start
+server control UNITYEEG
+server status UNITYEEG
+server control UNITYEEG
+server status UNITYEEG 1
+server status -h
+server status UNITYEEG --logLevel 1
+server structure
+q
+backdoor
+backdoor -h
+backdoor open -h
+backdoor open 1234
+.r C:\Users\Michael\BCI_API\Demo.config
+q
+.r C:\Users\Michael\BCI_API\Demo.config
+server start
+server control UNITYEEG
+.r C:\Users\Michael\BCI_API\Demo.config
+server start
+server control UNITYEEG
+log
+server status UNITYEEG
+server status UNITYEEG --logLevel 2
+server status UNITYEEG --logLevel 0
+server status UNITYEEG --logLevel 4
+server status UNITYEEG --logLevel 3
+server close

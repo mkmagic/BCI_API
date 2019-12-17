@@ -236,8 +236,7 @@ class NmsServer(ShellInterface):
                     msg = input("Send {}: ".format(self.FLAGS.name))
                     if msg in ShellInterface.END_CMDS:
                         break
-                    data = bytes(msg, "utf-8")
-                    self.transmissions[self.FLAGS.name].sendData(data)
+                    self.transmissions[self.FLAGS.name].sendMessage(msg)
                 else:
                     self.printError("Cannot control an inactive transmission.")
                     return False

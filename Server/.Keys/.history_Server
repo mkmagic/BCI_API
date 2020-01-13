@@ -192,3 +192,11 @@ backdoor open 1234
 server start
 server control UNITYEEG
 quit
+q
+.r C:\Users\Michael\BCI_API\Demo.config
+.r C:\Users\Michael\BCI_API\test.config
+q
+.r -h
+q
+.r C:\Users\Michael\BCI_API\Demo.config
+q

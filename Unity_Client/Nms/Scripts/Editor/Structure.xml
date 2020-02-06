@@ -1,0 +1,9 @@
+<Structure>
+    <Tabs>
+        <Tab text="Create NMS Object">
+            <Tab text="Receiver" content="TabCreateReceiver">
+            <Tab text="Transmitter" content="TabCreateTransmitter">
+            <Tab text="Observer" content="TabCreateObserver">
+        </Tab>
+    <Tabs>
+</Structure>

@@ -111,11 +111,11 @@ class MangerScreen(Screen):
 class ScreenManagement(ScreenManager):
     color = ListProperty()
 
-    def __init__(self):
+    def __init__(self, **kwargs):
         global interface
         interface = Interface(self.setPaths, self.serverDisconnected, self.serverReconnected)
         self._mutex = threading.Semaphore(1)
-        ScreenManager.__init__(self)
+        ScreenManager.__init__(self, **kwargs)
         self._interface = interface
         self._managerIsInit = False
         self._buttonsNamesToText={}

@@ -200,3 +200,53 @@ q
 q
 .r C:\Users\Michael\BCI_API\Demo.config
 q
+.r C:\Users\Michael\unity_smi_bci\config\CarGame.config
+start
+server start
+.r C:\Users\Michael\unity_smi_bci\config\CarGame.config
+q
+.r C:\Users\Michael\unity_smi_bci\config\CarGame.config
+q
+.set hostname 10.0.0.2
+component T TX test UDP 5010
+component R RX test 5011
+server start
+server structure
+q
+.r 
+.r C:\Users\Michael\unity_smi_bci\config\CarGame.config
+server structure
+q
+-h
+component -h
+component TX -h
+cls
+claer
+clear
+q
+component -h
+component EEG TX -h
+q
+component EEG TX -h
+component EEG TX P300_Calculation UDP 5050
+-h
+.set -h
+.set hostname -h
+.set hostname
+.set hostname 10.0.0.2
+.set hostname
+component t stimulus -h
+component t TX stimulus UDP 5018
+component Graphics RX -h
+component Graphics RX P300_CALCULATION 5019
+server -h
+server status -h
+server start
+server status P300_CALCULATION
+server control -h
+server control P300_CALCULATION
+component t tx test UDP 6078
+component t TX test UDP 607
+component r RX test 606
+server start
+server control TEST

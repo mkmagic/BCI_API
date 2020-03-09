@@ -250,3 +250,4 @@ component t TX test UDP 607
 component r RX test 606
 server start
 server control TEST
+q

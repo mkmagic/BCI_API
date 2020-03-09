@@ -1,5 +1,5 @@
 
-classdef UdpMsgClient
+classdef MsgClient
     properties
         serverHost;
         serverPort;
@@ -21,7 +21,7 @@ classdef UdpMsgClient
         %**
         % function constructor.
         %**
-        function obj = UdpMsgClient(sHost, sPort, cname, isAsyncRead)
+        function obj = MsgClient(sHost, sPort, cname, isAsyncRead)
             obj.serverHost = sHost;
             obj.serverPort = sPort;
             obj.name = cname;
@@ -34,6 +34,7 @@ classdef UdpMsgClient
             end
             
             availablePort = hdldaemon('socket', 0); % new available port
+            
             LocalPort = str2num(availablePort.ipc_id); % convert port to scalar
             
             obj.TCPSocket = tcpip(sHost, sPort,'LocalPort',LocalPort);

@@ -134,9 +134,18 @@ classdef MsgClient
         % @return logical boolean value. true in success and false
         % otherwise.
         %**
-        function sendData(obj, data)
+        function sendData(obj, data, protocol)
             msg = strcat(datestr(now,'yyyy-mm-dd HH:MM:SS.FFF') ,strcat('000;',data),'$@$');
-            fwrite(obj.UDPSocket,uint8(msg)); %sends the welcome message
+            if exist('protocol','var') % Check if protocl is set
+                if strcmp(protocol, 'TCP') % to TCP
+                    fwrite(obj.TCPSocket,uint8(msg));
+                else
+                    fwrite(obj.UDPSocket,uint8(msg)); % else send using UDP
+                end
+            else
+                fwrite(obj.UDPSocket,uint8(msg));    % else send using UDP   
+            end
+            
             disp(strcat(msg));
         end % send data function
         

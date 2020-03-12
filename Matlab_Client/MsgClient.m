@@ -33,13 +33,13 @@ classdef MsgClient
                 obj.isAsyncRead = 0;
             end
             
-            availablePort = hdldaemon('socket', 0); % new available port
+%             availablePort = hdldaemon('socket', 0); % new available port
+%             
+%             LocalPort = str2num(availablePort.ipc_id); % convert port to scalar
             
-            LocalPort = str2num(availablePort.ipc_id); % convert port to scalar
+            obj.TCPSocket = tcpip(sHost, sPort);
             
-            obj.TCPSocket = tcpip(sHost, sPort,'LocalPort',LocalPort);
-            
-            obj.UDPSocket = udp(sHost, sPort,'LocalPort',LocalPort);
+            obj.UDPSocket = udp(sHost, sPort);
             
             set(obj.UDPSocket, 'TimeOut',10);
         end

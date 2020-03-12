@@ -256,3 +256,12 @@ server structure
 q
 .r C:\Users\Michael\BCI_API\Example Project - Oddball Experiment\Server Configuration\ServerConfiguration.config
 server structure
+server close
+.set hostname 127.0.0.1
+server start
+server structure
+.set hostname 127.0.0.1
+server structure
+q
+.r C:\Users\Michael\BCI_API\Example Project - Oddball Experiment\Server Configuration\ServerConfiguration.config
+server structure

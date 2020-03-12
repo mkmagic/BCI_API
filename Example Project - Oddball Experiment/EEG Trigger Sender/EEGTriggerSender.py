@@ -1,13 +1,14 @@
 import sys
 import os
-sys.path.insert(0, '/'.join(os.getcwd().split('\\')[:-2])) # Add 'unity_smi_bci' to the PATH
+sys.path.insert(0, '/'.join(os.getcwd().split('\\')[:-2])) # Add 'BCI_API' to the PATH
 
 from Python_Client.Client import Receiver
 from psychopy import core
 from psychopy import parallel
 
+
 SERVER_HOST = '10.0.0.1'
-SERVER_PORT = 6011
+SERVER_PORT = 8012
 
 
 HIGH_BEEP_TRIGGER = 20
@@ -34,23 +35,10 @@ class EEGTriggerSender:
 
 
     def sendTrigger(self, data):
-        if data[1] == '0':
-            triggerPort.setData(HIGH_BEEP_TRIGGER)
-            print('sent ' + str(HIGH_BEEP_TRIGGER))
-            core.wait(TRIGGER_LEN)
-            triggerPort.setData(0)
-
-        elif data[1] == '1':
-            triggerPort.setData(LOW_BEEP_TRIGGER)
-            print('sent ' + str(LOW_BEEP_TRIGGER))
-            core.wait(TRIGGER_LEN)
-            triggerPort.setData(0)
-
-        elif data[1] == 'Stimulus':
-            triggerPort.setData(STIMULUS_TRIGGER)
-            print('sent ' + str(STIMULUS_TRIGGER))
-            core.wait(TRIGGER_LEN)
-            triggerPort.setData(0)
+        triggerPort.setData(int(data[1]))
+        print('sent '+ data[1])
+        core.wait(TRIGGER_LEN)
+        triggerPort.setData(0)
 
     def close(self):
         self._listener.close()

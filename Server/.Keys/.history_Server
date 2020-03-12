@@ -251,3 +251,8 @@ component r RX test 606
 server start
 server control TEST
 q
+.r C:\Users\Michael\BCI_API\Example Project - Oddball Experiment\Server Configuration\ServerConfiguration.config
+server structure
+q
+.r C:\Users\Michael\BCI_API\Example Project - Oddball Experiment\Server Configuration\ServerConfiguration.config
+server structure
